@@ -1,0 +1,7 @@
+name: 'Prosite Champs Devis'
+description: 'Prosite Champs Devis'
+type: module
+core: 8.x
+dependencies:
+  - field
+package: 'Prosite'

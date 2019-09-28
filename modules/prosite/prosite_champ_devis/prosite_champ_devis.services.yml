@@ -1,0 +1,5 @@
+services:
+  prosite_champ_devis.prosite_champ_devis_form_alter_subscriber:
+    class: Drupal\prosite_champ_devis\EventSubscriber\AlterNodeFormSubscriber
+    tags :
+      - { name: event_subscriber }

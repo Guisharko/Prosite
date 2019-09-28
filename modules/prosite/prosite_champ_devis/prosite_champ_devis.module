@@ -1,0 +1,43 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function prosite_champ_devis_theme()
+{
+  $theme = [];
+
+  $theme['prosite_champ_devis'] = [
+    'variables' => [
+      '#designation' => NULL,
+      '#quantite' => NULL,
+      '#tva' => NULL,
+      '#pu' => NULL,
+      '#pt' => NULL,
+    ],
+  ];
+
+  return $theme;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function prosite_champ_devis_form_alter(&$form, &$form_state, &$form_id) {
+  $form['body']['widget']['#after_build'][] = '_allowed_formats_remove_textarea_help';
+}
+
+function _allowed_formats_remove_textarea_help($form_element, FormStateInterface $form_state) {
+
+  if (isset($form_element[0]['format'])) {
+    unset($form_element[0]['format']['guidelines']);
+    unset($form_element[0]['format']['help']);
+    unset($form_element[0]['format']['#type']);
+    unset($form_element[0]['format']['#theme_wrappers']);
+    $form_element[0]['format']['format']['#access'] = FALSE;
+  }
+
+  return $form_element;
+}
