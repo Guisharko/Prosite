@@ -1,0 +1,39 @@
+{#
+/**
+ * Default theme implementation for Views to output a Fullcalendar View.
+ *
+ * Available variables:
+ * - options: View plugin style options:
+ *   - classes: CSS classes.
+ *   - defaultDate: Default date of the calendar
+ *   - start: Field name of start date
+ *   - end: Field name of end date
+ *
+ * @see template_preprocess_views_view_fullcalendar()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    options.classes
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  <div id="calendar"></div>
+  <div id="bottom-buttons fc-button-group">
+    {% if showAddEvent %}
+    <div class="fullcalendar-bottom-btn add-event-btn mt-3">
+      <button type="button" class="btn btn-success">
+        <a id="calendar-add-rendez-vous"  href="{{ language }}fullcalendar-view-event-add?entity={{ entity_id }}&bundle={{ options.bundle_type }}&start_field={{ options.start }}&end_field={{ options.end }}&destination={{ path('<current>') }}" class="use-ajax" data-dialog-type="dialog" data-dialog-renderer="off_canvas"
+            data-dialog-options="{&quot;width&quot;:400}">{{ 'Ajouter un rendez vous'|t }}
+        </a>
+      </button>
+      <button type="button" class="btn btn-secondary">
+        <a id="calendar-add-devis"  href="{{ language }}fullcalendar-view-event-add?entity={{ entity_id }}&bundle={{ 'intervention' }}&start_field={{ options.start }}&end_field={{ options.end }}&destination={{ path('<current>') }}" class="use-ajax" data-dialog-type="dialog" data-dialog-renderer="off_canvas"
+           data-dialog-options="{&quot;width&quot;:400}">{{ 'Ajouter une intervention'|t }}</a>
+      </button>
+    </div>
+    {% endif %}
+  </div>
+</div>
