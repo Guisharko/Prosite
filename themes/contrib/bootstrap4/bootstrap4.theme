@@ -150,3 +150,22 @@ function bootstrap4_theme_suggestions_views_view_alter(array &$suggestions, arra
   sort($suggestions);
 }
 
+/**
+ * Implements hook_theme_suggestions_views_view_alter()
+ */
+function bootstrap4_theme_suggestions_views_bootstrap_grid_alter(array &$suggestions, array $variables) {
+  $theme_hook_original = $variables['theme_hook_original'];
+  if (isset($variables['view'])) {
+    $suggestions[] = sprintf($theme_hook_original . '__%s', $variables['view']->current_display);
+    if (!empty($variables['view']->query->displayHandler->view->rowPlugin->options["view_mode"])) {
+      $view_mode = $variables['view']->query->displayHandler->view->rowPlugin->options["view_mode"];
+      $suggestions[] = sprintf($theme_hook_original . '__%s', $view_mode);
+      $suggestions[] = sprintf($theme_hook_original . '__%s__%s', $variables['view']->current_display, $view_mode);
+      $suggestions[] = sprintf($theme_hook_original . '__%s__%s', $view_mode, $variables['view']->current_display);
+    }
+
+  }
+  $suggestions = array_unique($suggestions);
+  sort($suggestions);
+}
+
