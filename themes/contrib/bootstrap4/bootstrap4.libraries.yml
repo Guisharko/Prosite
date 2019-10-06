@@ -62,3 +62,9 @@ sass:
       css/bootstrap4.sass.css: {}
   dependencies:
     - bootstrap4/cdn-styling
+open_sans:
+  version: VERSION
+  css:
+    component:
+      fonts/open_sans.css: {}
+      fonts.googleapis.com/css?family=Open+Sans:300,400,600,700: {}

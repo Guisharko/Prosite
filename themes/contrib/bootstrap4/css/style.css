@@ -731,3 +731,144 @@ label {
     align-items: center;
     justify-content: center;
 }
+
+*,
+*:after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+nav a:hover,
+nav a:focus {
+  outline: none;
+}
+
+.cl-effect-5 a {
+  overflow: hidden;
+  padding: 0 4px;
+  height: 1em;
+}
+
+.cl-effect-5 a span {
+  position: relative;
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.cl-effect-5 a span::before {
+  position: absolute;
+  top: 100%;
+  content: attr(data-hover);
+  font-weight: 700;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+.cl-effect-5 a:hover span,
+.cl-effect-5 a:focus span {
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.nav-menu {
+  position: relative;
+  display: inline-block;
+  margin: 15px 25px;
+  outline: none;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+  font-size: 1.35em;
+  line-height: 1em;
+}
+
+.block-system-branding-block{
+  max-height: 150px;
+}
+
+.ul-main{
+  background: #b9a66c;
+}
+h1, h2, h1 a, h2 a {
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h1 a {
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+h2, h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+h3, h4, h5, h6, h3 a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+h3, h3 a {
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+body, p, a, li {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.teaser-prestation{
+  width: 350px;
+  height: 520px;
+  background-color: #f0f0f0;
+  border-radius: 10px 10px 0 0;
+}
+.teaser-prestation > img {
+   border-radius: 10px 10px 0 0;
+}
+.apropos-block{
+  margin-top: 150px;
+}
+
+.contact-text{
+}
+
+.green{
+  color: #7abf18;
+}
+.white{
+  color: white;
+}
+.contact-bg{
+  background-color: white;
+  top: -50px;
+  bottom: -50px;
+}
+
+.region-contentafter{
+  background-color: #b9a66c;
+  height: 600px;
+}
+
+.form-item, .form-actions {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+textarea.form-control {
+  height: 250px;
+}
+.form-control{
+  max-width: 100vw;
+}
+
+.vignette-prestation{
+  height: 200px;
+}

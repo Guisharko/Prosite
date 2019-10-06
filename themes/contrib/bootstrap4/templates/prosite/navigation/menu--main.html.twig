@@ -30,50 +30,51 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-  <ul{{ attributes.addClass(['navbar-nav', 'mr-auto']) }}>
-      {% for item in items %}
-        {%
-          set classes_list_item = [
+      <ul{{ attributes.addClass(['navbar-nav','ul-main']) }}>
+        {% for item in items %}
+          {% set classes_list_item = [
             'nav-item',
             item.is_expanded ? 'dropdown',
-          ]
-        %}
-        {%
-          set classes_link = [
+          ] %}
+          {% set classes_link = [
             'nav-item',
             'nav-link',
+            'nav-menu',
             item.is_expanded ? 'dropdown-toggle',
             item.is_collapsed ? 'dropdown-toggle',
             item.in_active_trail ? 'active',
-          ]
-        %}
-        <li{{ item.attributes.addClass(classes_list_item) }}>
-          {% if item.below %}
-            {{ link(item.title, item.url, { 'class': classes_link, 'data-toggle' : 'dropdown' }) }}
-            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-          {% else %}
-            {{ link(item.title, item.url, { 'class': classes_link }) }}
-          {% endif %}
-        </li>
-      {% endfor %}
-  </ul>
+          ] %}
+          <li{{ item.attributes.addClass(classes_list_item) }}>
+            <a href={{ item.url }} {{ attributes.addClass(classes_link) }}>
+              <span class="prestation-menu" data-hover={{ item.title }}>
+            {{ item.title }}
+              </span>
+            </a>
+            {#{% if item.below %}#}
+            {#{{ link(item.title, item.url, { 'class': classes_link, 'data-toggle' : 'dropdown' }) }}#}
+            {#{{ menus.menu_links(item.below, attributes, menu_level + 1) }}#}
+            {#{% else %}#}
+            {#{{ link(item.title, item.url, { 'class': classes_link }) }}#}
+            {#{% endif %}#}
+
+          </li>
+        {% endfor %}
+      </ul>
     {% else %}
-<div class="dropdown-menu dropdown-menu-right">
-  {% for item in items %}
-    {%
-      set classes_link = [
-      'dropdown-item',
-      item.is_expanded ? 'dropdown-toggle',
-      item.is_collapsed ? 'dropdown-toggle',
-      item.in_active_trail ? 'active',
-    ]
-    %}
-    {{ link(item.title, item.url, { 'class': classes_link }) }}
-    {% if item.below %}
-      {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-    {% endif %}
-  {% endfor %}
-</div>
+      <div class="dropdown-menu dropdown-menu-right">
+        {% for item in items %}
+          {% set classes_link = [
+            'dropdown-item',
+            item.is_expanded ? 'dropdown-toggle',
+            item.is_collapsed ? 'dropdown-toggle',
+            item.in_active_trail ? 'active',
+          ] %}
+          {{ link(item.title, item.url, { 'class': classes_link }) }}
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        {% endfor %}
+      </div>
     {% endif %}
   {% endif %}
 {% endmacro %}

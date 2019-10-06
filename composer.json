@@ -25,7 +25,8 @@
         "drupal/scheduler": "^1.0",
         "drupal/pathauto": "^1.4",
         "drupal/views_bootstrap": "^4.1",
-        "drupal/bootstrap": "^3.20"
+        "drupal/bootstrap": "^3.20",
+        "drupal/contact_block": "^1.4"
     },
     "replace": {
         "drupal/core": "^8.7"
