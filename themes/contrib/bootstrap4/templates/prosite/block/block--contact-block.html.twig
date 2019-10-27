@@ -46,6 +46,11 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {{ content }}
+    {{ content.field_nom }}
+    {{ content.field_adresse }}
+    {{ content.field_email }}
+    {{ content.field_telephone }}
+    {{ content.message }}
+    {{ content.actions.submit }}
   {% endblock %}
 </div>
